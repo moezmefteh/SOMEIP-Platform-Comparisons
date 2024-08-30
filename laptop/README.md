@@ -36,8 +36,8 @@ To build the project, navigate to the project directory and run:
 
 This command will:
 
-    Create the build/ directory if it doesn't exist.
-    Compile the source code and place the resulting binaries in the build/ directory.
+- Create the build/ directory if it doesn't exist.
+- Compile the source code and place the resulting binaries in the build/ directory.
 
 Running the Example
 
