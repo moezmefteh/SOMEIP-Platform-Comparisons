@@ -3,6 +3,15 @@
 ## Overview
 This directory contains an example implementation of SOME/IP for a Linux-based laptop.
 
+## Project Structure
+
+The project is organized into the following directories:
+
+- **`src/`**: Contains the source code for the project. This includes the main implementation files for the SOME/IP example.
+- **`include/`**: Contains header files that define the interfaces and data structures used in the source code.
+- **`build/`**: This directory is used for out-of-source builds and should be created during the build process.
+- **`Makefile`**: The Makefile is used for building the project, managing dependencies, and specifying build rules.
+
 ## Getting Started
 
 ### Prerequisites
@@ -17,19 +26,33 @@ This directory contains an example implementation of SOME/IP for a Linux-based l
 
 To set up the development environment on your laptop, execute the provided `install.sh` script:
 
-```bash
-./install.sh
-This script will:
+'./install.sh'
 
-    Install necessary build tools and libraries
-    Download and install Boost
-    Clone and build CapICXX and vSomeIP libraries
-    Download and configure generators for CapICXX
-    
-Documentation
-For more information on SOME/IP, CapICXX, and vSomeIP, please refer to their official documentation and repositories.
+##Building the Project
 
-## Running
-- Execute the compiled binary on the laptop.
-- Test communication as described in the documentation.
+To build the project, navigate to the project directory and run:
 
+'make all'
+
+This command will:
+
+    Create the build/ directory if it doesn't exist.
+    Compile the source code and place the resulting binaries in the build/ directory.
+
+Running the Example
+
+After building the project, you need to run the compiled binaries. First, start the service:
+
+'./build/hello_world_service'
+
+In a separate terminal, run the client:
+
+'./build/hello_world_client'
+
+Cleaning the Build
+
+To clean up the build artifacts, use:
+
+'make clean'
+
+This command will remove the compiled binaries and other generated files, allowing you to start a fresh build.
