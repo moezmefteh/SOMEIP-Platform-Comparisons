@@ -26,13 +26,13 @@ The project is organized into the following directories:
 
 To set up the development environment on your laptop, execute the provided `install.sh` script:
 
-'./install.sh'
+    ./install.sh
 
 ##Building the Project
 
 To build the project, navigate to the project directory and run:
 
-'make all'
+    make all
 
 This command will:
 
@@ -43,16 +43,16 @@ Running the Example
 
 After building the project, you need to run the compiled binaries. First, start the service:
 
-'./build/hello_world_service'
+    ./build/hello_world_service
 
 In a separate terminal, run the client:
 
-'./build/hello_world_client'
+    ./build/hello_world_client
 
 Cleaning the Build
 
 To clean up the build artifacts, use:
 
-'make clean'
+    make clean
 
 This command will remove the compiled binaries and other generated files, allowing you to start a fresh build.
