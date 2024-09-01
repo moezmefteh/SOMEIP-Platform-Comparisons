@@ -19,6 +19,14 @@ copyToLib(){
 echo "Updating package list..."
 sudo apt-get update
 
+# Install g++ version 11.4.0
+echo "Installing g++ version 11.4.0..."
+sudo apt-get install -y g++-11
+
+# Set g++-11 as the default compiler
+sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-11 60
+sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-11 60
+
 # Install necessary packages
 echo "Installing build tools and libraries..."
 
