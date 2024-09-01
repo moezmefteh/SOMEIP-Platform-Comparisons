@@ -2,7 +2,7 @@
 
 # Define directories
 DOWNLOADS_DIR="$HOME/Downloads"
-
+LIB_DIR="$HOME/COMMONAPI"
 # Create necessary directories
 mkdir -p ${DOWNLOADS_DIR}
 mkdir -p ${LIB_DIR}
@@ -10,9 +10,9 @@ cd ${DOWNLOADS_DIR} || { echo "Failed to change directory to ${DOWNLOADS_DIR}"; 
 
 # Function to copy build artifacts to the library directory
 copyToLib(){
-    mkdir ../../../COMMONAPI 
-    cp -d lib* ../../../COMMONAPI 
-    cd ../../../
+    sudo mkdir -p ${LIB_DIR}
+    cp -d lib* ${LIB_DIR} 
+    cd ${LIB_DIR}
 }
 
 # Update package list
@@ -23,7 +23,13 @@ sudo apt-get update
 echo "Installing build tools and libraries..."
 
 # Remove any existing Boost installation
-sudo apt-get --purge remove libboost-dev libboost-doc 2> /dev/null || true
+sudo apt-get -y --purge remove libboost-all-dev libboost-doc libboost-dev
+echo "clear boost dir"
+sudo rm -r /usr/local/lib/libboost*
+sudo rm -r /usr/local/include/boost
+sudo rm -r /usr/local/lib/cmake/[Bb]oost*
+sudo rm -f /usr/lib/libboost_*
+sudo rm -r /usr/include/boost
 
 # Install essential build tools and libraries
 sudo apt-get install -y \
@@ -35,13 +41,14 @@ sudo apt-get install -y \
     openjdk-11-jdk           # Updated Java version
 
 # Download and install Boost from the official website
-BOOST_VERSION=1_81_0
-BOOST_TAR_FILE=boost_${BOOST_VERSION}.tar.gz
-BOOST_URL=https://boostorg.jfrog.io/artifactory/main/release/1.81.0/source/${BOOST_TAR_FILE}
+BOOST_VERSION=1.74.0
+BOOST_VERSION_TAR=1_74_0
+BOOST_TAR_FILE=boost_${BOOST_VERSION_TAR}.tar.gz
+BOOST_URL=https://boostorg.jfrog.io/artifactory/main/release/${BOOST_VERSION}/source/${BOOST_TAR_FILE}
 
 wget ${BOOST_URL} || { echo "Failed to download Boost"; exit 1; }
 tar -xf ${BOOST_TAR_FILE} || { echo "Failed to extract Boost"; exit 1; }
-cd boost_${BOOST_VERSION}/ || { echo "Failed to change directory to boost_${BOOST_VERSION}"; exit 1; }
+cd boost_${BOOST_VERSION_TAR}/ || { echo "Failed to change directory to boost_${BOOST_VERSION_TAR}"; exit 1; }
 ./bootstrap.sh --prefix=/usr/
 sudo ./b2
 sudo ./b2 install
@@ -54,7 +61,7 @@ git checkout tags/3.2.3
 mkdir build
 cd build || { echo "Failed to change directory to build"; exit 1; }
 cmake ..
-make -j
+make -j3
 if [ $? -ne 0 ]; then
     echo "Error building capicxx-core-runtime"
     exit 1
@@ -69,7 +76,7 @@ git checkout tags/3.4.10
 mkdir build
 cd build || { echo "Failed to change directory to build"; exit 1; }
 cmake ..
-make -j
+make -j3
 if [ $? -ne 0 ]; then
     echo "Error building vSomeIP"
     exit 1
@@ -84,7 +91,7 @@ git checkout tags/3.2.3
 mkdir build
 cd build || { echo "Failed to change directory to build"; exit 1; }
 cmake ..
-make -j
+make -j3
 sudo make install
 if [ $? -ne 0 ]; then
     echo "Error building capicxx-someip-runtime"
