@@ -28,7 +28,7 @@ To set up the development environment on your laptop, execute the provided `inst
 
     ./install.sh
 
-##Building the Hello World Project
+## Building the Hello World Project
 
 To build the project, navigate to the project directory and run:
 
@@ -39,7 +39,7 @@ This command will:
 - Create the build/ directory if it doesn't exist.
 - Compile the source code and place the resulting binaries in the build/ directory.
 
-Running the Hello World Example
+## Running the Hello World Example
 
 After building the project, you need to run the compiled binaries. First, start the service:
 
@@ -48,6 +48,9 @@ After building the project, you need to run the compiled binaries. First, start 
 In a separate terminal, run the client:
 
     VSOMEIP_CONFIGURATION=../config/helloworld-local.json VSOMEIP_APPLICATION_NAME=hello_world_client ./hello_world_client
+
+- The **VSOMEIP_CONFIGURATION** environment variable is used to specify the path to the JSON configuration file. This variable tells vSomeIP where to find the configuration file, which it will parse at startup. This is handled internally by vSomeIP and not shown directly in your application code.
+- The **VSOMEIP_APPLICATION_NAME** environment variable specifies which application instance you are launching. vSomeIP uses this name to look up the application’s settings in the JSON configuration file. Each application is defined by a "name" field and an "id".
 
 Expected output service:
 
@@ -109,7 +112,20 @@ Expected output client
     2024-09-02 10:10:19.149806 [info] Client [5555] is closing connection to [4444]
     2024-09-02 10:10:19.149864 [info] local_uds_client_endpoint_impl::receive_cbk Error: Operation canceled
 
-Cleaning the Build
+## How JSON Configuration Affects Your Application
+
+While the direct use of the JSON configuration is not shown in your provided code snippet, here’s how it generally affects the service:
+
+- **Service Identification:**
+The configuration file defines the service ID and instance ID. Your service uses these IDs to register itself with the vSomeIP routing manager.
+
+- **Networking:**
+Network settings like IP addresses and ports are specified in the configuration file. The service uses these settings to establish communication channels.
+
+- **Logging:**
+The logging settings in the JSON file control the verbosity and destination of log messages from your service.
+
+## Cleaning the Build
 
 To clean up the build artifacts, use:
 
