@@ -1,0 +1,8 @@
+{
+    "simulation": {
+        "interval": 1000,
+        "max_speed": 200,
+        "max_rpm": 8000,
+        "max_temperature": 100
+    }
+}
