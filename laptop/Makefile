@@ -1,9 +1,9 @@
 # Compiler and flags
 CXX = g++
-CXXFLAGS = -std=c++11 -Iinclude -Wall -Wextra
+CXXFLAGS = -std=c++11 -Iinclude -Wall -Wextra -I/home/mmeftah@actia.local/COMMONAPI/include
 
 # Libraries
-LIBS = -lvsomeip3
+LIBS = -L/home/mmeftah@actia.local/COMMONAPI -lvsomeip3
 
 # Directories
 SRC_DIR = src
