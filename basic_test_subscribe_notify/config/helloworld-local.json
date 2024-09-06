@@ -1,0 +1,56 @@
+{
+    "vsomeip": {
+      "services": [
+        {
+          "service": 4660,              // 0x1234
+          "instance": 22136,            // 0x5678
+          "events": [
+            {
+              "eventgroup": 17573,      // 0x4465
+              "event": 34616            // 0x8778
+            }
+          ]
+        }
+      ],
+      "network": {
+        "interfaces": ["lo"],          // Loopback interface
+        "bind": "127.0.0.1",           // Bind address
+        "broadcast": "127.0.0.255"     // Broadcast address (for loopback)
+      }
+    },
+    "applications": [
+      {
+        "name": "hello_world_service",
+        "type": "provider",
+        "service_id": 4660,            // 0x1234
+        "instance_id": 22136,          // 0x5678
+        "event_groups": [
+          {
+            "event_group_id": 17573,  // 0x4465
+            "events": [
+              {
+                "event_id": 34616    // 0x8778
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "hello_world_client",
+        "type": "consumer",
+        "service_id": 4660,            // 0x1234
+        "instance_id": 22136,          // 0x5678
+        "event_groups": [
+          {
+            "event_group_id": 17573,  // 0x4465
+            "events": [
+              {
+                "event_id": 34616    // 0x8778
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+  

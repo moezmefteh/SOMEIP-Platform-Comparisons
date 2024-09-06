@@ -1,0 +1,18 @@
+{
+    "unicast": "127.0.0.1",
+    "logging": {
+      "level": "info",
+      "console": "true"
+    },
+    "applications": [
+      {
+        "name": "SpeedService",
+        "id": "0x1234"
+      },
+      {
+        "name": "SpeedClient",
+        "id": "0x5678"
+      }
+    ]
+  }
+  

@@ -1,0 +1,39 @@
+{
+    "unicast": "127.0.0.1",
+    "logging": {
+        "level": "info"
+    },
+    "applications": [
+        {
+            "name": "service",
+            "id": "0x0100",
+            "services": [
+                {
+                    "service": "0x1234",
+                    "instance": "0x5678",
+                    "unreliable": "true",
+                    "eventgroups": [
+                        {
+                            "eventgroup": "0x5678",
+                            "events": [
+                                {
+                                    "event": "0x5678"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "client",
+            "id": "0x0101",
+            "instances": [
+                {
+                    "service": "0x1234",
+                    "instance": "0x5678"
+                }
+            ]
+        }
+    ]
+}

@@ -1,30 +1,29 @@
 #include <QApplication>
-#include <QWidget>
-#include "ui_vehicle_simulator.h"  // Include the generated UI header
-#include "vehicle_simulator.hpp"   // Include your own header
+#include <iostream>
+#include "someip_communicator.hpp"
 
-int main(int argc, char *argv[])
-{
-    QApplication app(argc, argv);  // Create QApplication object
+int main(int argc, char *argv[]) {
+    // Initialize the SOME/IP communicator
+    SomeIpCommunicator someIpCommunicator;
+    someIpCommunicator.initialize();
 
-    QWidget window;                // Create a QWidget
-    Ui::VehicleSimulator ui;       // Create a UI object
-    ui.setupUi(&window);           // Set up the UI
+    // Variables to store user input
+    int speed, rpm, temperature;
 
-    // Connect UI signals to slots
-    QObject::connect(ui.speedSlider, &QSlider::valueChanged, [&](int value) {
-        // Your code here to handle speedSlider value changes
-    });
+    while (true) {
+        std::cout << "Enter speed (or -1 to exit): ";
+        std::cin >> speed;
+        if (speed == -1) break; // Exit condition for the loop
+        someIpCommunicator.sendSpeed(speed);
 
-    QObject::connect(ui.rpmSlider, &QSlider::valueChanged, [&](int value) {
-        // Your code here to handle rpmSlider value changes
-    });
+        std::cout << "Enter RPM: ";
+        std::cin >> rpm;
+        someIpCommunicator.sendRpm(rpm);
 
-    QObject::connect(ui.temperatureSlider, &QSlider::valueChanged, [&](int value) {
-        // Your code here to handle temperatureSlider value changes
-    });
+        std::cout << "Enter temperature: ";
+        std::cin >> temperature;
+        someIpCommunicator.sendTemperature(temperature);
+    }
 
-    window.show();                 // Show the main window
-
-    return app.exec();             // Enter the event loop
+    return 0;
 }

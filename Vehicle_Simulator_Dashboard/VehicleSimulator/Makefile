@@ -14,7 +14,7 @@ BUILD_DIR = build
 UI_DIR = ui
 
 # Define sources and objects
-SRC = $(SRC_DIR)/main.cpp $(SRC_DIR)/vehicle_simulator.cpp
+SRC = $(SRC_DIR)/main.cpp $(SRC_DIR)/vehicle_simulator.cpp $(SRC_DIR)/someip_communicator.cpp
 OBJ = $(SRC:$(SRC_DIR)/%.cpp=$(BUILD_DIR)/%.o)
 UIC_HEADER = $(BUILD_DIR)/ui_vehicle_simulator.h
 MOC_SRC = $(BUILD_DIR)/moc_vehicle_simulator.cpp

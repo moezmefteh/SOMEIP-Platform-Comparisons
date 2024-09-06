@@ -4,6 +4,7 @@
 #include <QWidget>
 #include <QLabel>
 #include <QVBoxLayout>
+#include <vsomeip/vsomeip.hpp> // Include vSomeIP library
 
 class Dashboard : public QWidget {
     Q_OBJECT
@@ -20,6 +21,10 @@ private:
     QLabel *m_speedLabel;
     QLabel *m_rpmLabel;
     QLabel *m_temperatureLabel;
+
+    void initializeSomeIP(); // Method to initialize SOME/IP client
+    std::shared_ptr<vsomeip::application> app; // SOME/IP application instance
+    
 };
 
 #endif // DASHBOARD_HPP

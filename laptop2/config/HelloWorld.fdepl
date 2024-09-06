@@ -1,0 +1,11 @@
+// Example deployment file
+{
+    "name": "HelloWorldService",
+    "version": "1.0",
+    "services": [
+        {
+            "name": "hello_world.HelloWorld",
+            "port": 5000
+        }
+    ]
+}

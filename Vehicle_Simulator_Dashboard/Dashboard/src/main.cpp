@@ -1,14 +1,15 @@
 #include <QApplication>
 #include "dashboard.hpp"
+#include "someip_dashboard_communicator.hpp"
 
 int main(int argc, char *argv[]) {
-    QApplication a(argc, argv);
+    QApplication app(argc, argv);
 
-    Dashboard dashboard;
-    dashboard.show();
+    Dashboard window;
+    window.show();
 
-    // Connect SOME/IP communication to update dashboard
-    // Example: connect(someIpReceiver, &SomeIpReceiver::speedReceived, &dashboard, &Dashboard::updateSpeed);
+    SomeIpDashboardCommunicator someIpCommunicator;
+    someIpCommunicator.initialize();
 
-    return a.exec();
+    return app.exec();
 }
