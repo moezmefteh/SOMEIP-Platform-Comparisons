@@ -1,4 +1,0 @@
-/home/mmeftah@actia.local/Desktop/SOMEIP-Platform-Comparisons/basic_test_subscribe_notify/build/CMakeFiles/service.dir
-/home/mmeftah@actia.local/Desktop/SOMEIP-Platform-Comparisons/basic_test_subscribe_notify/build/CMakeFiles/client.dir
-/home/mmeftah@actia.local/Desktop/SOMEIP-Platform-Comparisons/basic_test_subscribe_notify/build/CMakeFiles/edit_cache.dir
-/home/mmeftah@actia.local/Desktop/SOMEIP-Platform-Comparisons/basic_test_subscribe_notify/build/CMakeFiles/rebuild_cache.dir
