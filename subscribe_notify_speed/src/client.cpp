@@ -24,7 +24,7 @@ void SomeIPClient::start() {
     std::cout << "[CLIENT] Registered message handler for service " << std::hex << SERVICE_ID << ", event group " << EVENTGROUP_ID << std::endl;
 
     // Subscribe to the speed event
-    app_->subscribe(SERVICE_ID, INSTANCE_ID, EVENTGROUP_ID, MAJOR_VERSION, EVENT_ID);
+    app_->subscribe(SERVICE_ID, INSTANCE_ID, EVENTGROUP_ID);
     std::cout << "[CLIENT] Subscribed to speed event for service " << SERVICE_ID << ", event group " << EVENTGROUP_ID << std::endl;
 
     // Start the client

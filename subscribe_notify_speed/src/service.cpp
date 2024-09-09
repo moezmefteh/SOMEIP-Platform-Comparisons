@@ -23,12 +23,13 @@ void SomeIPService::start() {
     app_->offer_event(SERVICE_ID, INSTANCE_ID, EVENT_ID, event_groups, vsomeip::event_type_e::ET_FIELD, std::chrono::milliseconds::zero(), true, false);
     std::cout << "[SERVICE] Offered event group " << std::hex << EVENTGROUP_ID << " for service " << SERVICE_ID << std::endl;
 
+    notify_thread_ = std::thread(&SomeIPService::notify_speed, this);
+    std::cout << "[SERVICE] Notify thread started" << std::endl;
+
     // Start the application
     std::cout << "[SERVICE] Application started" << std::endl;
     app_->start();
 
-    notify_thread_ = std::thread(&SomeIPService::notify_speed, this);
-    std::cout << "[SERVICE] Notify thread started" << std::endl;
 }
 
 void SomeIPService::stop() {
@@ -51,7 +52,9 @@ void SomeIPService::notify_speed() {
         std::vector<vsomeip::byte_t> payload_data(sizeof(int));
         std::memcpy(payload_data.data(), &speed_, sizeof(int));
         pl->set_data(payload_data);
-        
+        // pl->set_data(reinterpret_cast<const vsomeip::byte_t*>(&speed_), sizeof(speed_));
+        // app_->notify(SERVICE_ID, INSTANCE_ID, EVENT_ID, pl);
+
         // Notify clients with extracted constants
         app_->notify(SERVICE_ID, INSTANCE_ID, EVENT_ID, pl, true);
         std::cout << "[SERVICE] Sent speed update: " << speed_ << std::endl;
