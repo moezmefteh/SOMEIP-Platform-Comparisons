@@ -12,30 +12,30 @@ This repo contains SOME/IP implementations on STM32, Raspberry Pi, and laptops t
 ## Getting Started
 
 ### repo structure
-SOMEIP-Platform-Comparisons/
-├── stm32/
-│   ├── src/
-│   ├── include/
-│   ├── lib/
-│   ├── CMakeLists.txt
-│   └── README.md
-├── raspberry-pi/
-│   ├── src/
-│   ├── include/
-│   ├── CMakeLists.txt
-│   ├── setup.sh
-│   └── README.md
-├── laptop/
-│   ├── src/
-│   │   ├── hello_world_client_main.cpp
-│   │   ├── hello_world_service_main.cpp
-│   ├── include/
-│   │   ├── hello_world_client.hpp
-│   │   ├── hello_world_service.hpp
-│   ├── Makefile
-│   ├── install.sh
-│   └── README.md
-└── README.md
+    SOMEIP-Platform-Comparisons/
+    ├── stm32/
+    │   ├── src/
+    │   ├── include/
+    │   ├── lib/
+    │   ├── CMakeLists.txt
+    │   └── README.md
+    ├── raspberry-pi/
+    │   ├── src/
+    │   ├── include/
+    │   ├── CMakeLists.txt
+    │   ├── setup.sh
+    │   └── README.md
+    ├── laptop/
+    │   ├── src/
+    │   │   ├── hello_world_client_main.cpp
+    │   │   ├── hello_world_service_main.cpp
+    │   ├── include/
+    │   │   ├── hello_world_client.hpp
+    │   │   ├── hello_world_service.hpp
+    │   ├── Makefile
+    │   ├── install.sh
+    │   └── README.md
+    └── README.md
 
 ### Prerequisites
 - Development tools for each platform.
